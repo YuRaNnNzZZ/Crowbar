@@ -69,6 +69,7 @@ Public Class GarrysModTagsUserControl
 				MyBase.RaiseTagsPropertyChanged()
 			End If
 
+#If 0 Then
 			Me.theCheckmarkedCheckBoxes.Clear()
 			For Each selectedCheckBox As CheckBoxEx In Me.theCheckBoxes
 				If selectedCheckBox.Checked Then
@@ -88,10 +89,12 @@ Public Class GarrysModTagsUserControl
 					aCheckBox.Enabled = True
 				Next
 			End If
+#End If
 		End Set
 	End Property
 
 	Protected Overrides Sub OnCheckBox_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+#If 0 Then
 		If Not Me.theCheckBoxesAreChangingViaMe Then
 			Dim selectedCheckBox As CheckBoxEx = CType(sender, CheckBoxEx)
 			If selectedCheckBox.Checked Then
@@ -110,6 +113,7 @@ Public Class GarrysModTagsUserControl
 				Next
 			End If
 		End If
+#End If
 
 		MyBase.OnCheckBox_CheckedChanged(sender, e)
 	End Sub

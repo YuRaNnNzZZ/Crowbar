@@ -1164,8 +1164,8 @@ Public Class PublishUserControl
 			Me.GetUserSteamID()
 		End If
 
-		Dim editableTextBoxesAreReadOnly As Boolean = (Me.theSelectedItem.IsPublished) AndAlso (Me.theSelectedItem.OwnerID <> Me.theUserSteamID)
-		Dim editableNonTextWidgetsAreEnabled As Boolean = (Me.theSelectedItem.IsDraft) OrElse (Me.theSelectedItem.IsTemplate) OrElse (Me.theSelectedItem.OwnerID = Me.theUserSteamID)
+		Dim editableTextBoxesAreReadOnly As Boolean = False '(Me.theSelectedItem.IsPublished)
+		Dim editableNonTextWidgetsAreEnabled As Boolean = True '(Me.theSelectedItem.IsDraft) OrElse (Me.theSelectedItem.IsTemplate) OrElse (Me.theSelectedItem.OwnerID = Me.theUserSteamID)
 
 		Me.ItemGroupBox.Enabled = True
 		Me.UpdateItemGroupBoxLabel()
@@ -1452,7 +1452,7 @@ Public Class PublishUserControl
 			Me.GetUserSteamID()
 		End If
 
-		Dim editableNonTextWidgetsAreEnabled As Boolean = (Me.theSelectedItem.IsDraft) OrElse (Me.theSelectedItem.IsTemplate) OrElse (Me.theSelectedItem.OwnerID = Me.theUserSteamID)
+		Dim editableNonTextWidgetsAreEnabled As Boolean = True '(Me.theSelectedItem.IsDraft) OrElse (Me.theSelectedItem.IsTemplate) OrElse (Me.theSelectedItem.OwnerID = Me.theUserSteamID)
 
 		Me.BrowseItemContentPathFileNameButton.Enabled = editableNonTextWidgetsAreEnabled
 		Me.BrowseItemPreviewImagePathFileNameButton.Enabled = editableNonTextWidgetsAreEnabled
@@ -1482,7 +1482,7 @@ Public Class PublishUserControl
 		Me.DeleteItemButton.Enabled = editableNonTextWidgetsAreEnabled
 
 		'NOTE: SteamRemoteStorage_PublishWorkshopFile requires Item to have a Title, a Description, a Content File, and a Preview Image.
-		Me.PublishItemButton.Enabled = (((Me.theSelectedItem.IsDraft) AndAlso (Me.theSelectedItem.Title <> "" AndAlso Me.theSelectedItem.Description <> "" AndAlso Me.theSelectedItem.ContentPathFolderOrFileName <> "" AndAlso Me.theSelectedItem.PreviewImagePathFileName <> "")) OrElse (Me.theSelectedItem.IsChanged AndAlso (Me.theUserSteamID = Me.theSelectedItem.OwnerID)) OrElse (Me.theSelectedItem.IsTemplate))
+		Me.PublishItemButton.Enabled = (((Me.theSelectedItem.IsDraft) AndAlso (Me.theSelectedItem.Title <> "" AndAlso Me.theSelectedItem.Description <> "" AndAlso Me.theSelectedItem.ContentPathFolderOrFileName <> "" AndAlso Me.theSelectedItem.PreviewImagePathFileName <> "")) OrElse (Me.theSelectedItem.IsChanged) OrElse (Me.theSelectedItem.IsTemplate))
 	End Sub
 
 	Private Sub SwapBetweenOwnerNameAndID()
